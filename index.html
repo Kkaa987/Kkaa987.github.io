@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Форма заявки</title>
+</head>
+<body>
+  <h1>Оставьте заявку</h1>
+
+  <form action="https://formspree.io/f/xxxxxxxx" method="POST">
+    <label>
+      Имя:
+      <input type="text" name="name" required>
+    </label><br><br>
+
+    <label>
+      Email:
+      <input type="email" name="email" required>
+    </label><br><br>
+
+    <label>
+      Сообщение:
+      <textarea name="message" rows="4" required></textarea>
+    </label><br><br>
+
+    <!-- honeypot против спама: скрытое поле, люди его не видят, боты заполняют -->
+    <input type="text" name="_gotcha" style="display:none">
+
+    <button type="submit">Отправить</button>
+  </form>
+</body>
+</html>
