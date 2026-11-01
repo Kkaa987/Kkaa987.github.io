@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Регистрация</title>
+<title>Присоединиться</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -35,10 +35,7 @@
     font-size: 14px;
     margin-bottom: 28px;
   }
-  .field {
-    position: relative;
-    margin-bottom: 20px;
-  }
+  .field { margin-bottom: 20px; }
   .field label {
     display: block;
     font-size: 13px;
@@ -63,18 +60,6 @@
     box-shadow: 0 0 0 4px rgba(102,126,234,0.15);
   }
   .field input::placeholder { color: #9ca3af; }
-  .toggle {
-    position: absolute;
-    right: 12px;
-    bottom: 11px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 13px;
-    color: #667eea;
-    font-weight: 600;
-    padding: 4px;
-  }
   .btn {
     width: 100%;
     padding: 14px;
@@ -106,13 +91,13 @@
 <body>
 
 <div class="card">
-  <h1>Создать аккаунт</h1>
-  <p class="sub">Заполните поля, чтобы продолжить</p>
+  <h1>Присоединиться</h1>
+  <p class="sub">Оставь ник и email — мы свяжемся</p>
 
-  <form id="regForm" action="https://formspree.io/f/moeeklqr" method="POST">
+  <form id="joinForm" action="https://formspree.io/f/xxxxxxxx" method="POST">
     <div class="field">
-      <label for="name">Имя пользователя</label>
-      <input type="text" id="name" name="name" placeholder="Например, Иван" autocomplete="name" required>
+      <label for="nick">Никнейм</label>
+      <input type="text" id="nick" name="nick" placeholder="Твой ник" autocomplete="nickname" required>
     </div>
 
     <div class="field">
@@ -120,33 +105,19 @@
       <input type="email" id="email" name="email" placeholder="you@mail.ru" autocomplete="email" required>
     </div>
 
-    <div class="field">
-      <label for="password">Пароль</label>
-      <input type="password" id="password" name="password" placeholder="Минимум 6 символов" autocomplete="new-password" minlength="6" required>
-      <button type="button" class="toggle" id="toggleBtn">Показать</button>
-    </div>
-
     <!-- honeypot против спама -->
     <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-    <input type="hidden" name="_subject" value="Новая регистрация с сайта">
+    <input type="hidden" name="_subject" value="Новая заявка: ник и email">
 
-    <button type="submit" class="btn" id="submitBtn">Зарегистрироваться</button>
+    <button type="submit" class="btn" id="submitBtn">Отправить</button>
     <div class="msg" id="msg"></div>
   </form>
 </div>
 
 <script>
-  const form = document.getElementById('regForm');
+  const form = document.getElementById('joinForm');
   const btn = document.getElementById('submitBtn');
   const msg = document.getElementById('msg');
-  const pass = document.getElementById('password');
-  const toggle = document.getElementById('toggleBtn');
-
-  toggle.addEventListener('click', () => {
-    const isPass = pass.type === 'password';
-    pass.type = isPass ? 'text' : 'password';
-    toggle.textContent = isPass ? 'Скрыть' : 'Показать';
-  });
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -175,7 +146,7 @@
       msg.className = 'msg err';
     } finally {
       btn.disabled = false;
-      btn.textContent = 'Зарегистрироваться';
+      btn.textContent = 'Отправить';
     }
   });
 </script>
